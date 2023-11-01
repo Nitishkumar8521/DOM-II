@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masai Calculator using DOM</title>
+    <style>
+        h1{
+            text-align: center;
+            font-weight: 800;
+            color: darkgreen;
+        }
+        #parent{
+            margin: auto;
+            width: 30%;
+            height:auto;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            padding-top: 16px;
+            padding-bottom:16px;
+        }
+        #first{
+            margin: auto;
+            width: 80%;
+            height: 50px;
+            margin-top:30px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        #second>div:nth-child(1){
+            margin: auto;
+            width: 80%;
+            height: 35px;
+            margin-top:10px;
+            border-radius: 5px;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:7px;
+        }
+        #second>div:nth-child(2){
+            margin: auto;
+            width: 80%;
+            height: 35px;
+            margin-top:10px;
+            border-radius: 5px;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:7px;
+        }
+        #second>div:nth-child(3){
+            margin: auto;
+            width: 80%;
+            height: 35px;
+            margin-top:10px;
+            border-radius: 5px;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:7px;
+        }
+        #second>div:nth-child(4){
+            margin: auto;
+            width: 80%;
+            height: 35px;
+            margin-top:10px;
+            border-radius: 5px;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:7px;
+        }
+        #second>div>button:nth-child(4){
+            background-color: black;
+            color:white;
+        }
+        #second>#key4>button:nth-child(1){
+            background-color: red;
+            color:white;
+        }
+        #second>#key4>button:nth-child(3){
+            background-color: black;
+            color:white;
+        }
+        #second>div>button{
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 5px;
+        }
+        #first{
+            text-align: center;
+            padding-top: 16px;
+            font-weight: 1000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Masai Calculator</h1>
+    <div id="parent">
+        <div id="first">0</div>
+        <div id="second">
+            <div id="key1">
+                 <button>1</button>   <button>2</button>     <button>3</button>  <button>+</button>
+            </div>           
+           <div id="key2">
+                 <button>4</button>   <button>5</button>     <button>6</button>   <button>-</button>
+           </div>
+           <div id="key3">
+                 <button>7</button>   <button>8</button>     <button>9</button>   <button>*</button>
+           </div>
+           <div id="key4">
+                 <button>C</button>   <button>0</button>     <button>=</button>   <button>/</button>
+           </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    let key1=document.querySelectorAll('#key1>button');
+    let key2=document.querySelectorAll('#key2>button');
+    let key3=document.querySelectorAll('#key3>button');
+    let key4=document.querySelectorAll('#key4>button');
+    let first=document.getElementById('first');
+    let firstNumber="";
+    let secondNumber="";
+    let IsFirstNumber=true;
+    let operator="";
+    for(let i=0;i<key1.length;i++)
+    {
+        key1[i].addEventListener('click',function()
+        {
+           if(IsFirstNumber == true && i<key1.length-1)
+           {
+             firstNumber+=key1[i].innerText;
+             first.textContent=firstNumber;
+           }
+           if(IsFirstNumber==false && i<key1.length-1)
+           {
+             secondNumber+=key1[i].innerText;
+             first.textContent=secondNumber;
+           }
+           if(IsFirstNumber==true && i==key1.length-1)
+           {
+            operator+=key1[i].innerText;
+            first.textContent=operator;
+            IsFirstNumber=false;
+           }
+        })
+    }
+
+    for(let i=0;i<key2.length;i++)
+    {
+        key2[i].addEventListener('click',function()
+        {
+           if(IsFirstNumber == true && i<key2.length-1)
+           {
+             firstNumber+=key2[i].innerText;
+             first.textContent=firstNumber;
+           }
+           if(IsFirstNumber==false && i<key1.length-1)
+           {
+             secondNumber+=key2[i].innerText;
+             first.textContent=secondNumber;
+           }
+           if(IsFirstNumber==true && i==key2.length-1)
+           {
+            operator+=key2[i].innerText;
+            first.textContent=operator;
+            IsFirstNumber=false;
+           }
+        })
+    }
+
+    for(let i=0;i<key3.length;i++)
+    {
+        key3[i].addEventListener('click',function()
+        {
+           if(IsFirstNumber == true && i<key3.length-1)
+           {
+             firstNumber+=key3[i].innerText;
+             first.textContent=firstNumber;
+           }
+           if(IsFirstNumber==false && i<key3.length-1)
+           {
+             secondNumber+=key3[i].innerText;
+             first.textContent=secondNumber;
+           }
+           if(IsFirstNumber==true && i==key3.length-1)
+           {
+            operator+=key3[i].innerText;
+            first.textContent=operator;
+            IsFirstNumber=false;
+           }
+        })
+    }
+
+    for(let i=0;i<key4.length;i++)
+    {
+        key4[i].addEventListener('click',function()
+        {
+           if(IsFirstNumber == true && i==1)
+           {
+             firstNumber+=key4[i].innerText;
+             first.textContent=firstNumber;
+           }
+           if(IsFirstNumber==false && i==1) 
+           {
+             secondNumber+=key4[i].innerText;
+             first.textContent=secondNumber;
+           }
+           if(IsFirstNumber==true && i==key4.length-1) 
+           {
+            operator+=key4[i].innerText;
+            first.textContent=operator;
+            IsFirstNumber=false;
+           }
+           if(i==0)
+           {
+            firstNumber="";
+            secondNumber="";
+            IsFirstNumber=true;
+            operator="";
+            first.textContent=null;
+           }
+           if(i==2)
+           {
+            first.textContent=calculate(firstNumber,secondNumber,operator);
+            firstNumber="";
+            secondNumber="";
+            IsFirstNumber=true;
+            operator="";
+           }
+        })
+    }         
+          
+  function calculate(firstNumber,secondNumber,opt)
+  {
+    switch(opt)
+    {
+      case "+":
+      {
+        return Number(firstNumber) + Number(secondNumber);      
+      }        
+      case "-":
+      {
+        return Number(firstNumber) - Number(secondNumber);        
+      }
+      case "*":
+      {
+        return Number(firstNumber) * Number(secondNumber);
+      }
+      case "/":
+      {
+        return Number(firstNumber) / Number(secondNumber);         
+      }
+    }
+  } 
+</script>
