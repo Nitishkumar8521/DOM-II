@@ -1,0 +1,134 @@
+<!-- MIN & MAX LEADERBOARD (DOM)
+Create the file leaderboard.html so that it looks similar to the image below
+Functionality
+By clicking on any number it shows up in the score box joined to any previous numbers already present (Eg: To enter a score of 423 you have to press 4 2 3)
+Once the button ENTER is pressed the score gets compared with the MIN and MAX boxes, if the current score is less than the MIN score it gets updated with the current score, if the current score is greater than the MAX score it gets updated with the current score
+The SCORE box will be reset with empty value -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEADERBOARD</title>
+    <style>
+        #parent{
+            height:500px;
+            width: 40%;
+            margin: auto;
+        }
+        #child1{
+            display: flex;
+            justify-content: space-around;
+        }
+        #child1>div{
+            height: 50px;
+            width: 100px;
+            text-align: center;
+            padding-top:30px;
+        }
+        #child1>div:nth-child(1){
+            background-color: red;
+        }
+        #child1>div:nth-child(2){
+            background-color: green;
+        }
+        #child2{
+            display: flex;
+            justify-content: space-around;
+        }
+        #child3{
+            text-align: center;
+            padding-top: 30px;
+        }
+        #child4{
+            border:2px solid red;
+            height: 60px;
+            width: 200px;
+            margin-left: 170px;
+            background-color: rgb(191, 194, 197);
+        }
+        #child5{
+            display: grid;
+            grid-template-columns:repeat(3,1fr) ;
+            width: 200px;
+            margin-left: 170px;
+            margin-top: 40px;
+            height: auto;
+        }
+        #child5>button{
+            margin: 7px;
+            height: 50px;
+        }
+        .red{
+            background-color: red;
+        }
+        .green{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div id="child1">
+            <div id="min">50</div> 
+            <div id="max">200</div> 
+        </div>
+        <div id="child2">
+            <div>MIN</div>
+            <div>MAX</div>
+        </div>
+        <div id="child3">SCORE</div>
+        <div id="child4" style="text-align: center;padding-top: 30px;">0</div>
+        <div id="child5">
+            <button class="green">1</button>
+            <button class="red">2</button>
+            <button class="green">3</button>
+            <button class="red">4</button>
+            <button class="red">5</button>
+            <button class="red">6</button>
+            <button class="green">7</button>
+            <button class="red">8</button>
+            <button class="green">9</button>
+        </div>
+        <button id="zero" style="margin-left: 245px;margin-top: 7px; height: 50px; width: 55px;background-color: violet;">0</button><br>
+        <button id="enter" style="margin-left: 170px; height: 50px; width:200px;margin-top: 10px;background-color: black;color:white;">
+            ENTER</button>
+    </div>
+</body>
+<script>
+    let min=document.getElementById('min');
+    let max=document.getElementById('max');
+    let zero=document.getElementById('zero');
+    let no="";
+    let score=document.querySelector('#child4');
+    let keypad=document.querySelectorAll('#child5>button');
+    let enter=document.getElementById('enter');
+    enter.addEventListener('click',function()
+    {
+        let number=Number(no);
+        if(number<min.textContent)
+        {
+            min.textContent=number;
+        }
+        else if(number>max.textContent)
+        {
+            max.textContent=number;
+        }
+        no="";
+    })
+    for(let i=0;i<keypad.length;i++)
+    {
+        keypad[i].addEventListener('click',function()
+        {
+            no+=keypad[i].innerText;
+            score.textContent=no;
+        })
+    }
+    zero.addEventListener('click',function()
+    {
+        no+=zero.innerText;
+        score.textContent=no;
+    })
+
+</script>
+</html>
